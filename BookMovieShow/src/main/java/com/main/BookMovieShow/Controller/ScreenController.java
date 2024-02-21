@@ -25,7 +25,8 @@ public class ScreenController {
     
     @Autowired
     private BookService bookService;
-
+    
+    //simply get all seats  for a screen without statuses
     @GetMapping("/{screenId}")
     public ResponseEntity<ScreenDto> getScreenById(@PathVariable Long screenId) {
         ScreenDto screenDto = screenService.getScreenById(screenId);
@@ -38,24 +39,27 @@ public class ScreenController {
 //        return ResponseEntity.ok(screenDtos);
 //    }
     
+    
+    //------------------SHOW CONTROLLER-----------
  // Get available seats for a specific show on a screen with seat statuses
-    @GetMapping("/{screenId}/seats/available")
-    public ResponseEntity<List<SeatDto>> getAvailableSeatsForShowOnScreen(
-            @PathVariable Long screenId,
-            @PathVariable Long showId) {
-        List<SeatDto> availableSeatDtos = screenService.getAvailableSeatsForShowOnScreen(screenId, showId);
-        return ResponseEntity.ok(availableSeatDtos);
-    }
+//    @GetMapping("/{screenId}/seats/available")
+//    public ResponseEntity<List<SeatDto>> getAvailableSeatsForShowOnScreen(
+//            @PathVariable Long screenId,
+//            @PathVariable Long showId) {
+//        List<SeatDto> availableSeatDtos = screenService.getAvailableSeatsForShowOnScreen(screenId, showId);
+//        return ResponseEntity.ok(availableSeatDtos);
+//    }
 
-    // Book seats for a show on a screen
-    @PostMapping("/{screenId}/seats/book")
-    public ResponseEntity<String> bookSeatsForShowOnScreen(
-            @PathVariable Long screenId,
-            @PathVariable Long showId,
-            @RequestBody List<Long> seatIds) {
-        bookService.bookSeatsForShowOnScreen(screenId, showId, seatIds);
-        return ResponseEntity.ok("Seats booked successfully!");
-    }
+    //-------------------BOOKING CONTROLLER-----------
+//    // Book seats for a show on a screen
+//    @PostMapping("/{screenId}/seats/book")
+//    public ResponseEntity<String> bookSeatsForShowOnScreen(
+//            @PathVariable Long screenId,
+//            @PathVariable Long showId,
+//            @RequestBody  List<Long> seatIds) {
+//        bookService.bookSeatsForShowOnScreen(screenId, showId, seatIds);
+//        return ResponseEntity.ok("Seats booked successfully!");
+//    }
 
     // Other CRUD operations and endpoints as needed
 }

@@ -25,7 +25,7 @@ public class MovieController {
         MovieDto movieDto = movieService.getMovieById(movieId);
         return ResponseEntity.ok(movieDto);
     }
-
+    
     @GetMapping
     public ResponseEntity<List<MovieDto>> getAllMovies() {
         List<MovieDto> movieDtos = movieService.getAllMovies();

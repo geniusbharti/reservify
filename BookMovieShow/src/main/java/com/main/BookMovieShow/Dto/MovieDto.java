@@ -12,7 +12,9 @@ public class MovieDto {
 	private String genre;
 	private int durationInMin;
 	private String country;
+	private String title;
 	
+
 	private String lanaguage;
 	
 	private String rating;
@@ -125,6 +127,13 @@ public class MovieDto {
 		this.synopsis = synopsis;
 	}
 	
-	
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
 	
 }

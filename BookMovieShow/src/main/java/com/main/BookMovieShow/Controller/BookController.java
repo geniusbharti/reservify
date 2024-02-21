@@ -1,5 +1,8 @@
 package com.main.BookMovieShow.Controller;
 
-public class BookController {
+import org.springframework.web.bind.annotation.RestController;
 
+@RestController
+public class BookController {
+	
 }

@@ -11,13 +11,8 @@ public interface UserService {
 		
 		    void registerUser(UserDto userDto);
 		
-		    UserDto updateUser(Long userId, UserDto userDto);
+		    void updateUser(Long userId, UserDto userDto);
 		
 		    void deleteUser(Long userId);
 
-			void updateUsername(Long userId, String newUsername);
-
-			void updatePhoneNumber(Long userId, Long newPhoneNumber);
-
-			void updateEmail(Long userId, String newEmail);
 }
