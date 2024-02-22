@@ -21,4 +21,23 @@ public class GlobalExceptionHandler {
       return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorResponse);
     }
 	
+	@ExceptionHandler(OptimisticLockingException.class)
+    public ResponseEntity<ErrorResponse> handleOptimisticLockingException(OptimisticLockingException ex) {
+      ErrorResponse errorResponse = new ErrorResponse(HttpStatus.CONFLICT.value(), ex.getMessage());
+      return ResponseEntity.status(HttpStatus.CONFLICT).body(errorResponse);
+    }
+	
+	
+	@ExceptionHandler(NoSuchBookingExistsException.class)
+    public ResponseEntity<ErrorResponse> handleNoSuchBookingExistsException(NoSuchBookingExistsException ex) {
+      ErrorResponse errorResponse = new ErrorResponse(HttpStatus.NOT_FOUND.value(), ex.getMessage());
+      return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorResponse);
+    }
+	
+
+	@ExceptionHandler(SeatNotFoundException.class)
+    public ResponseEntity<ErrorResponse> handleSeatNotFoundException(SeatNotFoundException ex) {
+      ErrorResponse errorResponse = new ErrorResponse(HttpStatus.NOT_FOUND.value(), ex.getMessage());
+      return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorResponse);
+    }
 }

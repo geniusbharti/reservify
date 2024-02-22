@@ -20,9 +20,13 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public UserDto getUserById(Long userId) {
 		Optional<User> user = userRepository.findById(userId);
-		User userEntity = user.get();
-		UserDto userDto = User.prepareUserDTO(userEntity);
-		return userDto;
+		if(user.isPresent()) {
+			User userEntity = user.get();
+			UserDto userDto = User.prepareUserDTO(userEntity);
+			return userDto;
+		}
+		
+		else throw new NoSuchUserExistsException(userId);
 	}
 
 	@Override

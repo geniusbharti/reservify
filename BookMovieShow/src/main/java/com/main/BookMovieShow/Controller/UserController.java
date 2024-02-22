@@ -3,7 +3,6 @@ package com.main.BookMovieShow.Controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,9 +26,7 @@ public class UserController {
     // API to get a user by ID
     @GetMapping("/{userId}")
     public ResponseEntity<UserDto> getUserById(@PathVariable Long userId) {
-         // Implement logic to fetch a user by ID
-    	 UserDto user = userService.getUserById(userId);
-              
+    	 UserDto user = userService.getUserById(userId);              
          return ResponseEntity.ok(user);
     }
 
@@ -42,16 +39,17 @@ public class UserController {
 
     // API to register a new user
     @PostMapping("/register")
-    public void registerUser(@RequestBody UserDto userDto) {
+    public ResponseEntity<String> registerUser(@RequestBody UserDto userDto) {
     	// Placeholder logic - register a new user
         userService.registerUser(userDto);
+        return ResponseEntity.ok("User registered successfully!");
     }
 
     // API to update user details
     @PutMapping("/{userId}")
     public ResponseEntity<String> updateUser(@PathVariable Long userId, @RequestBody UserDto userDto) {
     	userService.updateUser(userId, userDto);
-    	return ResponseEntity.ok("User is updated successfully");
+    	return ResponseEntity.ok("User is updated successfully!");
     }
 
     // API to delete a user by ID

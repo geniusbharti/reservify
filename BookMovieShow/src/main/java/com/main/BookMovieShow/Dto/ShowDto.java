@@ -10,8 +10,6 @@ import com.main.BookMovieShow.Entity.Movie;
 import com.main.BookMovieShow.Entity.Screen;
 import com.main.BookMovieShow.Entity.Theater;
 
-import jakarta.persistence.OneToMany;
-
 public class ShowDto {
 	private Long showId;
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss.SSSSSS")

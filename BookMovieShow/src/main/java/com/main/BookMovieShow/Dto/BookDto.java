@@ -3,35 +3,42 @@ package com.main.BookMovieShow.Dto;
 import java.time.LocalDateTime;
 import java.util.List;
 
-import com.main.BookMovieShow.Entity.Book;
 import com.main.BookMovieShow.Entity.Seat;
 import com.main.BookMovieShow.Entity.Show;
 import com.main.BookMovieShow.Entity.User;
 
 public class BookDto {
 	private Long bookingId;
+	private int quantity;
+	private LocalDateTime bookedTime;
 	private Show show;
 	private User user;
+	
 	private List<Seat> seats;
-	private LocalDateTime bookedTime;
 	
 	public BookDto() {}
 	
+	
+
 	/**
 	 * @param bookingId
+	 * @param quantity
+	 * @param bookedTime
 	 * @param show
 	 * @param user
 	 * @param seats
-	 * @param bookedTime
 	 */
-	public BookDto(Long bookingId, Show show, User user, List<Seat> seats, LocalDateTime bookedTime) {
+	public BookDto(Long bookingId, int quantity, LocalDateTime bookedTime, Show show, User user, List<Seat> seats) {
 		super();
 		this.bookingId = bookingId;
+		this.quantity = quantity;
+		this.bookedTime = bookedTime;
 		this.show = show;
 		this.user = user;
 		this.seats = seats;
-		this.bookedTime = bookedTime;
 	}
+
+
 
 	public Long getBookingId() {
 		return bookingId;
@@ -73,20 +80,21 @@ public class BookDto {
 		this.bookedTime = bookedTime;
 	}
 
+	
 	@Override
 	public String toString() {
-		return "BookDto [bookingId=" + bookingId + ", show=" + show + ", user=" + user + ", seats=" + seats
-				+ ", bookedTime=" + bookedTime + "]";
+		return "BookDto [bookingId=" + bookingId + ", quantity=" + quantity + ", bookedTime=" + bookedTime + ", show="
+				+ show + ", user=" + user + ", seats=" + seats + "]";
+	}
+
+	public int getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
 	}
 	
-	
-	public static Book prepareBookEntity(BookDto bookDto) {
-		Book bookEntity = new Book();
-		
-		
-		
-		return bookEntity;
-	}
 	
 	
 }

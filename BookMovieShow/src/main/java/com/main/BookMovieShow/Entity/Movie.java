@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.main.BookMovieShow.Dto.MovieDto;
 
-import jakarta.annotation.Generated;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

@@ -32,12 +32,7 @@ public class MovieController {
         return ResponseEntity.ok(movieDtos);
     }
     
-    // Get shows for a specific movie
-    @GetMapping("/{movieId}/shows")
-    public ResponseEntity<List<ShowDto>> getShowsForMovie(@PathVariable Long movieId) {
-        List<ShowDto> showDtos = movieService.getShowsForMovie(movieId);
-        return ResponseEntity.ok(showDtos);
-    }
+    
 
     // Other CRUD operations and endpoints as needed
 }

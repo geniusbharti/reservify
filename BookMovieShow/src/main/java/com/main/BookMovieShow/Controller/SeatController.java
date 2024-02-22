@@ -1,6 +1,6 @@
 package com.main.BookMovieShow.Controller;
 
-import java.util.List;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -23,12 +23,6 @@ public class SeatController {
     public ResponseEntity<SeatDto> getSeatById(@PathVariable Long seatId) {
         SeatDto seatDto = seatService.getSeatById(seatId);
         return ResponseEntity.ok(seatDto);
-    }
-
-    @GetMapping
-    public ResponseEntity<List<SeatDto>> getAllSeats() {
-        List<SeatDto> seatDtos = seatService.getAllSeats();
-        return ResponseEntity.ok(seatDtos);
     }
 
     // Other CRUD operations and endpoints as needed

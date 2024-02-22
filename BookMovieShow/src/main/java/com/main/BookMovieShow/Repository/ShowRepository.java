@@ -18,4 +18,10 @@ public interface ShowRepository extends JpaRepository<Show, Long>{
 	        @Param("showId") Long showId,
 	        @Param("seatStatus") ReserveStatusSeat seatStatus
 	    );
+	
+	
+		
+
+
+	
 }

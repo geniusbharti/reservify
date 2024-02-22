@@ -4,14 +4,13 @@ package com.main.BookMovieShow.Service;
 import java.util.List;
 
 import com.main.BookMovieShow.Dto.BookDto;
+import com.main.BookMovieShow.Response.BookingResponse;
 
 public interface BookService {
-	//method names by you //you want to have those apis
-    BookDto createBooking(BookDto bookDto);
+	
     BookDto getBookingById(Long bookId);
-    void cancelBooking(Long bookId);
-    List<BookDto> getUserBookings(Long userId);
-	void bookSeatsForShowOnScreen(Long screenId, Long showId, List<Long> seatIds);
+    void cancelBooking(Long bookId);  
+	BookingResponse bookSeatsForUser(Long userId, Long showId, List<Long> seatIds);
     
 
 }

@@ -4,22 +4,21 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.main.BookMovieShow.Dto.SeatDto;
-import com.main.BookMovieShow.Dto.TheaterDto;
 import com.main.BookMovieShow.Enum.ReserveStatusSeat;
 import com.main.BookMovieShow.Enum.SeatType;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EntityManager;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.Version;
 
 @Entity
 public class Seat {
@@ -48,8 +47,15 @@ public class Seat {
     @ManyToMany(mappedBy = "seats") // Add this annotation
     private List<Book> bookings; // Add this field
     
+    @Version
+    private Long version;
+    
     public Seat() {}
     
+	
+	
+	
+
 	/**
 	 * @param seatId
 	 * @param seatType
@@ -57,9 +63,10 @@ public class Seat {
 	 * @param seatStatus
 	 * @param screen
 	 * @param bookings
+	 * @param version
 	 */
 	public Seat(Long seatId, SeatType seatType, double seatPrice, ReserveStatusSeat seatStatus, Screen screen,
-			List<Book> bookings) {
+			List<Book> bookings, Long version) {
 		super();
 		this.seatId = seatId;
 		this.seatType = seatType;
@@ -67,14 +74,14 @@ public class Seat {
 		this.seatStatus = seatStatus;
 		this.screen = screen;
 		this.bookings = bookings;
+		this.version = version;
 	}
-	
-	
+
 
 	@Override
 	public String toString() {
 		return "Seat [seatId=" + seatId + ", seatType=" + seatType + ", seatPrice=" + seatPrice + ", seatStatus="
-				+ seatStatus + ", screen=" + screen + ", bookings=" + bookings + "]";
+				+ seatStatus + ", screen=" + screen + ", bookings=" + bookings + ", version=" + version + "]";
 	}
 
 	public Long getSeatId() {
@@ -127,6 +134,19 @@ public class Seat {
 		this.bookings = bookings;
 	}
     
+	
+	public Long getVersion() {
+		return version;
+	}
+
+	public void setVersion(Long version) {
+		this.version = version;
+	}
+	
+	public void refresh(EntityManager entityManager) {
+        entityManager.refresh(this);
+    }
+	
 	public static SeatDto prepareSeatDTO(Seat seat) {
 		SeatDto seatDto = new SeatDto();
 		seatDto.setScreen(seat.getScreen());

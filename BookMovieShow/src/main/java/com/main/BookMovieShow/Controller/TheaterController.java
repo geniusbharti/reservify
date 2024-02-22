@@ -20,32 +20,34 @@ public class TheaterController {
     @Autowired
     private TheaterService theaterService;
 
- // Get theaters by city
+    // Get theaters by city
     @GetMapping("/city/{city}")
     public ResponseEntity<List<TheaterDto>> getTheatersByCity(@PathVariable String city) {
         List<TheaterDto> theaterDtos = theaterService.getTheatersByCity(city);
         return ResponseEntity.ok(theaterDtos);
     }
     
+    // Get theater by id
     @GetMapping("/{theaterId}")
     public ResponseEntity<TheaterDto> getTheaterById(@PathVariable Long theaterId) {
         TheaterDto theaterDto = theaterService.getTheaterById(theaterId);
         return ResponseEntity.ok(theaterDto);
     }
     
+    // Get all theaters 
     @GetMapping
     public ResponseEntity<List<TheaterDto>> getAllTheaters() {
         List<TheaterDto> theaterDtos = theaterService.getAllTheaters();
         return ResponseEntity.ok(theaterDtos);
     }
     
- // Get movies in a specific theater
+     // Get movies in a specific theater
     @GetMapping("/{theaterId}/movies")
     public ResponseEntity<List<MovieDto>> getMoviesInTheater(@PathVariable Long theaterId) {
         List<MovieDto> movieDtos = theaterService.getMoviesInTheater(theaterId);
         return ResponseEntity.ok(movieDtos);
     }
     
-    // Other CRUD operations and endpoints as needed
+    // Other CRUD operations and endpoints as needed in future can be added...
 }
 

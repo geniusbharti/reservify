@@ -1,38 +1,35 @@
 package com.main.BookMovieShow.ServiceImpl;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.main.BookMovieShow.Dto.ScreenDto;
-import com.main.BookMovieShow.Dto.SeatDto;
+import com.main.BookMovieShow.Entity.Screen;
+import com.main.BookMovieShow.Repository.ScreenRepository;
 import com.main.BookMovieShow.Service.ScreenService;
 
 @Service
 public class ScreenServiceImpl implements ScreenService{
-
+	
+	@Autowired
+	ScreenRepository screenRepository;
+	
 	@Override
 	public ScreenDto getScreenById(Long screenId) {
-		// TODO Auto-generated method stub
-		return null;
+		    Optional<Screen> screen = screenRepository.findById(screenId);
+			Screen screenEntity = screen.get();
+			ScreenDto screenDto = Screen.prepareScreenDTO(screenEntity);
+			return screenDto;
 	}
 
 	@Override
 	public List<ScreenDto> getAllScreens() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<SeatDto> getAvailableSeatsForShowOnScreen(Long screenId, Long showId) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void bookSeatsForShowOnScreen(Long screenId, Long showId, List<Long> seatIds) {
-		// TODO Auto-generated method stub
-		
+		List<Screen> screen = screenRepository.findAll();
+        return screen.stream().map(Screen::prepareScreenDTO).collect(Collectors.toList());
 	}
 
 }

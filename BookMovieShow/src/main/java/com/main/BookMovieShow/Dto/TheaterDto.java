@@ -3,12 +3,7 @@ package com.main.BookMovieShow.Dto;
 import java.util.List;
 
 import com.main.BookMovieShow.Entity.Movie;
-import com.main.BookMovieShow.Entity.Show;
 import com.main.BookMovieShow.Entity.Theater;
-import com.main.BookMovieShow.Entity.User;
-
-import jakarta.persistence.Column;
-import jakarta.persistence.OneToMany;
 
 public class TheaterDto {
     private Long theaterId;

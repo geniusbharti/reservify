@@ -11,6 +11,6 @@ public interface MovieService {
 
 	List<MovieDto> getAllMovies();
 
-	List<ShowDto> getShowsForMovie(Long movieId);
+	
 
 }
